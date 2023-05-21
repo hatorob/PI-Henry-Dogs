@@ -1,10 +1,10 @@
 const { Temperament } = require("../db");
 const axios = require("axios");
-const URL = require("../utils/globalsVar");
+const {API_KEY, URL} = require("../utils/globalsVar");
 
 const getTemperaments = async (req,res)=> {
     try {
-        const response = await axios(URL);
+        const response = await axios(`${URL}${API_KEY}`);
         const dogs = response.data;
         const temperaments = dogs.map( element => element.temperament );
         temperaments.forEach( element => {

@@ -1,4 +1,7 @@
-const API_KEY = process.env.API_KEY;
-const URL = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`;
+const API_KEY = `?api_key=${process.env.API_KEY}`;
+const URL = `https://api.thedogapi.com/v1/breeds`;
 
-module.exports = URL;
+module.exports = {
+    API_KEY,
+    URL
+};

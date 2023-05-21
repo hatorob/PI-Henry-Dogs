@@ -10,7 +10,7 @@ router.get("/", getAllDogs);
 //! RUTA PARA PERRO POR ID
 router.get("/:id", getDogById);
 //! RUTA PARA OBTENER PERROS POR NAME
-router.get("/name?=", getDogsByName);
+router.get("/name", getDogsByName);
 //! RUTA PARA CREAR PERROS
 router.post("/", createDogs);
 
