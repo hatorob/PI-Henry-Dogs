@@ -8,9 +8,9 @@ const getAllDogs = async (req,res)=> {
         const dogsData = response.data;
         if(!dogsData) throw new Error("La url de la api de dogs se encuentra en fallas ya que no llega data");
         //!Si quiero que aparezcan incluidos los que estan guardados por BD
-        /* const dogsDB = await Dog.findAll();
-        const result = [...dogsData,...dogsDB] */
-        return res.status(200).json(dogsData);
+        const dogsDB = await Dog.findAll();
+        const result = [...dogsData,...dogsDB]
+        return res.status(200).json(result);
     } catch (error) {
         return res.status(500).json({error: error.message})
     }
