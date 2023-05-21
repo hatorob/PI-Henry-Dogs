@@ -1,6 +1,6 @@
 const axios = require("axios");
 const {API_KEY, URL} = require("../utils/globalsVar");
-const { Dog } = require("../db");
+const { Dog, Temperament } = require("../db");
 
 const getDogById = async (req,res)=> {
     try {
@@ -10,7 +10,15 @@ const getDogById = async (req,res)=> {
         const dogsIdApi = dogsData.find( dog => dog.id === Number(id));
         let dogsIdDB;
         if(!dogsIdApi) {
-            dogsIdDB = await Dog.findByPk(id);
+            dogsIdDB = await Dog.findByPk(id, {
+                include: [{
+                    model: Temperament,
+                    attributes: ['name'],
+                    through: {
+                        attributes: [],
+                    }
+                }]
+            });
         }
         res.status(200).json(dogsIdApi || dogsIdDB);
     } catch (error) {

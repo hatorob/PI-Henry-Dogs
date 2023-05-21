@@ -1,4 +1,4 @@
-const { Dog } = require("../db");
+const { Dog, Temperament } = require("../db");
 const { Op } = require("sequelize");
 const axios = require("axios");
 const {API_KEY, URL} = require("../utils/globalsVar");
@@ -14,7 +14,14 @@ const getDogsByName = async (req,res)=> {
                 name: {
                     [Op.iLike]: `%${name}%`
                 }
-            }
+            },
+            include: [{
+                model: Temperament,
+                attributes: ['name'],
+                through: {
+                    attributes: [],
+                }
+            }]
         })
         if(!searchDogsByNameDB) throw new Error("No se encontro la raza indicada");
         const result = [...searchDogsByNameAPI,...searchDogsByNameDB];
