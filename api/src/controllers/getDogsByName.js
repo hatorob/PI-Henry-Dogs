@@ -8,7 +8,7 @@ const getDogsByName = async (req,res)=> {
         const name = req.query.name;
         const response = await axios(`${URL}/search?q=${name}&${API_KEY}`);
         const searchDogsByNameAPI = response.data;
-        if(searchDogsByNameAPI.length === 0) throw new Error("No se encontro la raza indicada");
+        if(!searchDogsByNameAPI) throw new Error("No se encontro la raza indicada");
         const searchDogsByNameDB = await Dog.findAll({
             where: {
                 name: {
