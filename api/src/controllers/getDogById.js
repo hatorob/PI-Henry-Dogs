@@ -12,6 +12,7 @@ const getDogById = async (req,res)=> {
         const dogs = dogsData.map( dogs => getObjData(dogs));
         const dogsIdApi = dogs.find( dog => dog.id === Number(id));
         let dogsIdDB;
+        let resultdDB;
         if(!dogsIdApi) {
             dogsIdDB = await Dog.findByPk(id, {
                 include: [{
@@ -22,8 +23,10 @@ const getDogById = async (req,res)=> {
                     }
                 }]
             });
+            resultdDB = getObjData(dogsIdDB);
         }
-        res.status(200).json(dogsIdApi || dogsIdDB);
+
+        res.status(200).json(dogsIdApi || resultdDB);
     } catch (error) {
         return res.status(500).json({error: error.message})
     }
