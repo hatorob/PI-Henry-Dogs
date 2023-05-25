@@ -1,6 +1,6 @@
 const { Temperament } = require("../db");
 const axios = require("axios");
-const {API_KEY, URL} = require("../utils/globalsVar");
+const { API_KEY, URL} = require("./utils");
 
 const getTemperaments = async (req,res)=> {
     try {

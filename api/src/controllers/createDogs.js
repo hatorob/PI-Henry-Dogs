@@ -3,7 +3,7 @@ const { Dog } = require("../db");
 const createDogs = async (req,res)=> {
     try {
         const { name, height, weight, yearsLife, image, temperaments } = req.body;
-        if(!name, !height, !weight, !yearsLife, !image) throw new Error("Falta por llenar datos");
+        if(!name || !height || !weight || !yearsLife || !image || !temperaments) throw new Error("Falta por llenar datos");
         const newDog = await Dog.create({
             image,
             name,
