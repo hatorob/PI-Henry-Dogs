@@ -12,7 +12,7 @@ const getObjData = (dogs) => {
     }
     const dogObj = {
         id: dogs.id,
-        imagen: (typeof dogs.id === "number") ? dogs.image : dogs.image,
+        imagen: dogs.image,
         name: dogs.name,
         height: (typeof dogs.id === "number") ? dogs.height.metric: dogs.height,
         weight: (typeof dogs.id === "number") ? dogs.weight.metric: dogs.weight,
