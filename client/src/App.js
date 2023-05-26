@@ -1,9 +1,17 @@
 import './App.css';
+//! IMPORTAMOS ROUTES Y ROUTER
+import { Routes, Route } from 'react-router-dom';
+import WelcomeLandingPage from './components/WelcomeLandingPage/WelcomeLandingPage';
 
 function App() {
   return (
     <div className="App">
-      <h1>THE DOGS</h1>
+
+      <Routes>
+        <Route path='/' element={<WelcomeLandingPage/>} />
+      </Routes>
+
+
     </div>
   );
 }
