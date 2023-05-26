@@ -7,9 +7,12 @@ const getObjData = (dogs) => {
     if(typeof dogs.id === "string") {
         temperamentArray = dogs.Temperaments.map( el => el.name );
     }
+    if(dogs.reference_image_id) {
+        dogs.image = `https://cdn2.thedogapi.com/images/${dogs.reference_image_id}.jpg`;
+    }
     const dogObj = {
         id: dogs.id,
-        imagen: dogs.imagen,
+        imagen: (typeof dogs.id === "number") ? dogs.image : dogs.image,
         name: dogs.name,
         height: (typeof dogs.id === "number") ? dogs.height.metric: dogs.height,
         weight: (typeof dogs.id === "number") ? dogs.weight.metric: dogs.weight,
