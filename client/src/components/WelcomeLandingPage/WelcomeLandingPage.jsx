@@ -1,7 +1,8 @@
 import { DivPage, DivContainer, DivWelcome, DivVideo, VideoPlay, H1, P, ImageDog, ButtonLogin } from './styled';
 import videoDog from '../../utils/video/videodog.mp4';
 import imgDog from '../../utils/img/dog.png'
-const WelcomeLandingPage = () => {
+const WelcomeLandingPage = ({login}) => {
+
     return (
         <DivPage>
             <DivContainer>
@@ -11,7 +12,7 @@ const WelcomeLandingPage = () => {
                     <div>
                         <ImageDog src={imgDog} />
                     </div>
-                    <ButtonLogin> ENTRAR </ButtonLogin>
+                    <ButtonLogin type='submit' onClick={login}> ENTRAR </ButtonLogin>
                     
                 </DivWelcome>
                 <DivVideo>
