@@ -25,6 +25,9 @@ export const DivNavbarNavigate = styled.div`
 export const H1 = styled.h1`}
     margin: 0;
     font-size: 50px;
+    &:hover {
+        cursor: pointer;
+    }
 `;
 export const P = styled.h1`}
     font-size: 25px;
@@ -36,12 +39,14 @@ export const StyledNavlink = styled(NavLink)`
     padding: 0 10px;
     color: black;
     &.active {
+        border-radius: 30px 0 25px 0;
         background-color: #2F4450;
         color: white;
     }
     &:nth-child(3) {
         color: #fff;
         background-color: black;
+        border-radius: 30px 0 0 0;
     }
 
 `;

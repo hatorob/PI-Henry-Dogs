@@ -44,7 +44,7 @@ export const P = styled.h1`
     font-size: 35px;
     font-family: 'Old Standard TT', serif;
     font-style: italic;
-    Font-weight: 400;
+    font-weight: 400;
 `;
 
 export const ImageDog = styled.img`

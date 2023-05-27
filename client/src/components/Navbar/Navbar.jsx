@@ -1,4 +1,4 @@
-import { DivNavbar, DivRedes, DivTitlePage, DivNavbarNavigate, H1, P, StyledNavlink  } from './styled';
+import { DivNavbar, DivRedes, DivTitlePage, DivNavbarNavigate, H1, P, StyledNavlink  } from './styledNavbar';
 import { useNavigate } from 'react-router-dom';
 
 
