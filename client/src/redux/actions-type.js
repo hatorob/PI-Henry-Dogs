@@ -1,0 +1,9 @@
+const GET_DOGS = "GET_DOGS";
+const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+
+module.exports = {
+    GET_DOGS,
+    GET_TEMPERAMENTS,
+    SET_CURRENT_PAGE,
+}

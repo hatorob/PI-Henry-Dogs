@@ -1,4 +1,4 @@
-import { DivPage, DivContainer, DivWelcome, DivVideo, VideoPlay, H1, P, ImageDog, ButtonLogin } from './styledSearchAndFilter';
+import { DivPage, DivContainer, DivWelcome, DivVideo, VideoPlay, H1, P, ImageDog, ButtonLogin } from './styledWelcome';
 import videoDog from '../../utils/video/videodog.mp4';
 import imgDog from '../../utils/img/dog.png';
 

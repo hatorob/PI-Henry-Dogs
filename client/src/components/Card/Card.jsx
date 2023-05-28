@@ -1,7 +1,6 @@
 import { DivCard, DivDescription, DivWeight, DivTemperaments, DivDetail } from './styledCard';
 
 const Card = ({id, name, imagen, weight ,temperaments}) => {
-    console.log(temperaments);
     return (
         <DivCard imagen={imagen}>
             <DivDescription>
