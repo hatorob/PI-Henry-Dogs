@@ -8,14 +8,14 @@ export const DivPage = styled.div`
 
 export const DivContainer = styled.div`
     width: 90%;
-    height: 87vh;
+    height: 100vh;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 `;
 
 export const DivVideo = styled.div`
-    height:85%;
+    height:90%;
     margin-top: 50px;
     background: #061F2F;
     border-radius:50px;
@@ -28,7 +28,7 @@ export const VideoPlay = styled.video`
 `;
 
 export const DivForm = styled.div`
-    height:85%;
+    height:90%;
     margin-top: 50px;
     background: #ffffff;
     border-radius:50px;    
@@ -46,7 +46,7 @@ export const DivForm = styled.div`
     input {
         border-radius: 10px;
         margin: 10px;
-        padding: 10px 15px;
+        padding: 5px 10px;
         border: none;
         background-color: #2F4450;
         color: #fff;
@@ -69,6 +69,34 @@ export const DivForm = styled.div`
     }
     button:hover {
         cursor: pointer;
+    }
+    select {
+        margin-left: 20px;
+        height: 60px;
+        width: 200px;
+        background-color: #2F4450;
+        color: #fff;
+        font-family: 'Carter One', cursive;
+        border: none;
+    }
+    option {
+        margin-left: 40px;
+    }
+    ul {
+        padding: 0;
+        margin: 5px 0;
+        width: 300px;
+        margin: 10px auto 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+    li {
+        margin-left: 0;
+        margin-right: 4px;
+        list-style: none;
+        font-size: 11px;
     }
 `;
 

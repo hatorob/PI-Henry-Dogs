@@ -2,8 +2,16 @@ import { DivPage, DivVideo, DivContainer, DivForm, VideoPlay, DivErrors, DivBoli
 import videoDog from '../../utils/video/videodog.mp4';
 import { useState } from "react";
 import { validation } from "./validation";
+import {  useSelector, useDispatch } from 'react-redux';
+import { createDog } from "../../redux/actions";
+import { useNavigate } from 'react-router-dom';
 
 const CreateDog = () => {
+    
+
+    const dispatch = useDispatch();
+    const temperaments = useSelector( state => state.temperaments );
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         name: '',
@@ -12,6 +20,7 @@ const CreateDog = () => {
         maximumHeight: "",
         minimumWeight: "",
         maximumWeight: "",
+        temperaments: [],
         yearsLife: 0,
     })
 
@@ -28,6 +37,40 @@ const CreateDog = () => {
         }))
     }
 
+    const handleOptionsClick = (e) => {
+        const temperamentId = e.target.value;
+        const upTemperaments = formData.temperaments || [];
+        if(!upTemperaments.includes(Number(temperamentId))) {
+            let result = [...upTemperaments,Number(temperamentId)];
+            setFormData({
+                ...formData,
+                temperaments: result,
+            })
+        }
+    }
+    console.log("arrayTemperaments: ",formData.temperaments);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(formData.name && formData.imagen &&
+            formData.minimumHeight && formData.maximumHeight &&
+            formData.minimumWeight && formData.maximumWeight &&
+            formData.yearsLife && formData.temperaments
+        ) {
+            const dog = {
+                name: formData.name,
+                image: formData.imagen,
+                height: `${formData.minimumHeight} - ${formData.maximumHeight}`,
+                weight: `${formData.minimumWeight} - ${formData.maximumWeight}`,
+                yearsLife: formData.yearsLife.toString(),
+                temperaments: formData.temperaments
+            } 
+            dispatch(createDog(dog)); 
+            navigate("/home");
+        } else {
+            alert("No puede haber data vacia")
+        }
+    }
+
     return (
         <DivPage>
             <DivContainer>
@@ -36,11 +79,27 @@ const CreateDog = () => {
             </DivVideo>
             <DivForm>
                 <h1>CREATE YOUR DOG BREED</h1>
-                <form action="">
+                <form action="" onSubmit={handleSubmit}>
                     <input type="text" name="name" placeholder="Breed name" value={formData.name} onChange={handleChangle}/>
-                    <br />
                     <input type="text" name="imagen" placeholder="image url" value={formData.imagen} onChange={handleChangle}/>
                     <br />
+                    <label> Temperaments </label>
+                    <select name="" id="" multiple>
+                        {
+                           Array.isArray(temperaments) && temperaments?.map( (temperaments, index) => {
+                                return <option value={temperaments.id} key={index} name="temperaments" onClick={handleOptionsClick}>{temperaments.name}</option>
+                            })
+                        }
+                    </select>
+                    <ul>
+                        {   
+                            (Array.isArray(temperaments)) ?
+                            formData.temperaments.map( id => {
+                               return temperaments?.map( (temperament, index) =>  (temperament.id === id) ? <li key={index}>*{temperament.name}</li> : null)
+                            })
+                            : null
+                        }
+                    </ul>
                     <label htmlFor="">Height</label>
                     <br />
                     <input type="text" name="minimumHeight" placeholder="Minimum" value={formData.minimumHeight} onChange={handleChangle}/>

@@ -1,8 +1,10 @@
-import { GET_DOGS, SET_CURRENT_PAGE } from "./actions-type";
+import { GET_DOGS, GET_TEMPERAMENTS,  SET_CURRENT_PAGE, CREATE_DOG } from "./actions-type";
 
 //! creamos nuestro globalStore
 const initialState = {
     dogs: [],
+    temperaments: [],
+    isCreateDog: [],
     paginate: {
         currentPage: 1,
         itemsPage: 8,
@@ -16,6 +18,16 @@ const reducer = (state = initialState, {type,payload}) => {
                 ...state, 
                 dogs: payload
             } 
+        case GET_TEMPERAMENTS:
+            return {
+                ...state,
+                temperaments: payload
+            }
+        case CREATE_DOG:
+            return {
+                ...state,
+                temperaments: payload
+            }
         case SET_CURRENT_PAGE: {
             return {
                 ...state,
