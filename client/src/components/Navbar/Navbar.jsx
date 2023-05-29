@@ -18,13 +18,13 @@ const Navbar = () => {
             </DivTitlePage>
             <DivNavbarNavigate>
                 <StyledNavlink to="/home">
-                    <P>INICIO</P>
+                    <P>HOME</P>
                 </StyledNavlink>
                 <StyledNavlink to="/createDog">
-                    <P>CREAR PERRO</P>
+                    <P>CREATE DOG</P>
                 </StyledNavlink>
                 <StyledNavlink to="/" >
-                    <P>SALIR</P>
+                    <P>LOGOUT</P>
                 </StyledNavlink>
             </DivNavbarNavigate>
         </DivNavbar>
