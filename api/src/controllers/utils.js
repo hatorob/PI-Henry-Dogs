@@ -9,6 +9,7 @@ const getObjData = (dogs) => {
     }
     if(dogs.reference_image_id) {
         dogs.image = `https://cdn2.thedogapi.com/images/${dogs.reference_image_id}.jpg`;
+        if(dogs.id === 15 || dogs.id === 125 || dogs.id === 212) dogs.image = `https://cdn2.thedogapi.com/images/${dogs.reference_image_id}.png`;
     }
     const dogObj = {
         id: dogs.id,
