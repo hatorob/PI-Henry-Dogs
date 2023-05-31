@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_DOGS, GET_TEMPERAMENTS, SET_CURRENT_PAGE, CREATE_DOG, FILTER_TEMPERAMENTS } from "./actions-type";
+import { GET_DOGS, GET_TEMPERAMENTS, SET_CURRENT_PAGE, CREATE_DOG, FILTER_TEMPERAMENTS, DISPLAY_STATE, GET_DOGS_API, GET_DOGS_CREATE } from "./actions-type";
 
 export const getDogs = () => {
     return async (dispatch) => {
@@ -50,4 +50,17 @@ export const setCurrentPage = (number) => {
 
 export const filterTemperaments = (temperament) => {
     return { type: FILTER_TEMPERAMENTS, payload: temperament}
+}
+
+export const displayState = (state) => {
+    return { type: DISPLAY_STATE, payload: state }
+}
+
+// Obtener perros api y creados por el usuario
+export const getDogsApi = () => {
+    return { type: GET_DOGS_API }
+}
+
+export const getDogsCreate = () => {
+    return { type: GET_DOGS_CREATE }
 }
