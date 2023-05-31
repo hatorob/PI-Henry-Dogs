@@ -18,7 +18,7 @@ const getObjData = (dogs) => {
         height: (typeof dogs.id === "number") ? dogs.height.metric: dogs.height,
         weight: (typeof dogs.id === "number") ? dogs.weight.metric: dogs.weight,
         yearsLife: (typeof dogs.id === "number") ? dogs.life_span: dogs.yearsLife,
-        temperaments: (typeof dogs.id === "number") ? dogs.temperament?.split(","): temperamentArray,
+        temperaments: (typeof dogs.id === "number") ? dogs.temperament?.split(",").map( temperament => temperament.trim()): temperamentArray,
     }
     return dogObj;
 }

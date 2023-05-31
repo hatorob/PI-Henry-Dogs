@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_DOGS, GET_TEMPERAMENTS, SET_CURRENT_PAGE, CREATE_DOG } from "./actions-type";
+import { GET_DOGS, GET_TEMPERAMENTS, SET_CURRENT_PAGE, CREATE_DOG, FILTER_TEMPERAMENTS } from "./actions-type";
 
 export const getDogs = () => {
     return async (dispatch) => {
@@ -16,7 +16,6 @@ export const getTemperaments = () => {
     return async (dispatch) => {
         try {
             const { data } = await axios.get("http://localhost:3001/temperaments");
-            console.log(data);
             dispatch({type: GET_TEMPERAMENTS, payload: data })
         } catch (error) {
             alert("error: " + error.response.data.error);
@@ -41,6 +40,14 @@ export const createDog = (dog) => {
         }
     }
 }
+
+//Actualizar el paginado
 export const setCurrentPage = (number) => {
     return { type: SET_CURRENT_PAGE, payload: number }
+}
+
+//Filtar por temperaments.
+
+export const filterTemperaments = (temperament) => {
+    return { type: FILTER_TEMPERAMENTS, payload: temperament}
 }

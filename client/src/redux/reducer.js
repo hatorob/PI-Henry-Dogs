@@ -1,9 +1,10 @@
-import { GET_DOGS, GET_TEMPERAMENTS,  SET_CURRENT_PAGE, CREATE_DOG } from "./actions-type";
+import { GET_DOGS, GET_TEMPERAMENTS,  SET_CURRENT_PAGE, CREATE_DOG, FILTER_TEMPERAMENTS } from "./actions-type";
 
 //! creamos nuestro globalStore
 const initialState = {
     dogs: [],
     temperaments: [],
+    filterTemperaments: [],
     isCreateDog: [],
     paginate: {
         currentPage: 1,
@@ -28,7 +29,7 @@ const reducer = (state = initialState, {type,payload}) => {
                 ...state,
                 temperaments: payload
             }
-        case SET_CURRENT_PAGE: {
+        case SET_CURRENT_PAGE: 
             return {
                 ...state,
                 paginate: {
@@ -36,7 +37,11 @@ const reducer = (state = initialState, {type,payload}) => {
                     itemsPage: 8
                 }
             }
-        }
+        case FILTER_TEMPERAMENTS: 
+            return {
+                ...state,
+                filterTemperaments: state.dogs.filter( dog => dog.temperaments.includes(payload))
+            }
         default:
         return {...state}
     }

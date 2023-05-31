@@ -15,6 +15,9 @@ export const DivSearchAndFilter = styled.div`}
 export const DivFilter = styled.div`
     display: flex;
     gap: 40px;
+    select {
+        border: none;
+    }
 `;
 
 export const DivSearch = styled.div`

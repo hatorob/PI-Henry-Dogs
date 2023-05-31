@@ -8,7 +8,9 @@ import Cards from "../Cards/Cards";
 const Home = () => {
 
     const dogs = useSelector( state => state.dogs );
+    const filterTemperaments = useSelector( state => state.filterTemperaments );
 
+    console.log("filterTemperaments:", filterTemperaments);
     return (
         <>
             {
