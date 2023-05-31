@@ -13,12 +13,31 @@ const Home = () => {
     let dogsALL = useSelector( state => state.dogs );
     let dogsApi = useSelector( state => state.dogsApi );
     let dogsCreate = useSelector( state => state.dogsCreate );
-
-    if(display.all) result = dogsALL;
-    if(display.api) result = dogsApi;
-    if(display.create) result = dogsCreate;
-
+    //!  me traigo los filtros para ver su estado
     const filterTemperaments = useSelector( state => state.filterTemperaments );
+
+    if(display.all) {
+        if(filterTemperaments.state) {
+            result = filterTemperaments.data;
+        } else {
+            result = dogsALL;
+        }
+    } 
+    if(display.api) {
+        if(filterTemperaments.state) {
+            result = filterTemperaments.data;
+        } else {
+            result = dogsApi;
+        }
+    } 
+    if(display.create) {
+        if(filterTemperaments.state) {
+            result = filterTemperaments.data;
+        } else {
+            result = dogsCreate;
+        }
+    }
+
 
     console.log("filterTemperaments:", filterTemperaments);
     return (

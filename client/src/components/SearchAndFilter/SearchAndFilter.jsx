@@ -1,6 +1,6 @@
 import { DivContainer, DivSearchAndFilter, DivFilter, DivSelect, P, DivSearch } from "./styledSearchAndFilter";
 import { useSelector, useDispatch } from "react-redux";
-import { filterTemperaments, displayState, getDogsApi, getDogsCreate } from "../../redux/actions";
+import { filterTemperaments, displayState, getDogsApi, getDogsCreate, resetFilterAll } from "../../redux/actions";
 
 const SearchAndFilter = () => {
 
@@ -10,17 +10,16 @@ const SearchAndFilter = () => {
 
     const temperaments = useSelector( state => state.temperaments );
     const display = useSelector( state => state.displayState );
-    const api = useSelector( state => state.dogsApi );
-    const create = useSelector( state => state.dogsCreate );
 
-    console.log("display:",display);
-    console.log("api:", api);
-    console.log("create:", create);
 
     const handleClick = (e) => {
-        const temperamentSearch = e.target.value;
-        console.log("buscar:", temperamentSearch);
-        dispatch(filterTemperaments(temperamentSearch));
+
+        //Este if me permite identificar si estoy usando filtros
+        if(e.currentTarget.name === "temperaments") {
+            const temperamentSearch = e.target.value;
+            //console.log("buscar:", temperamentSearch);
+            dispatch(filterTemperaments(temperamentSearch));
+        }
     }
 
     const handleChecked = (e) => {
@@ -31,6 +30,8 @@ const SearchAndFilter = () => {
                 api: false,
                 create: false,
             }))
+            // Este dispatch me permite resetear los filtros por si cambian de opción
+            dispatch(resetFilterAll())
         }
         if(e.target.value === "api") {
             dispatch(displayState({
@@ -38,7 +39,10 @@ const SearchAndFilter = () => {
                 api: true,
                 create: false,
             }))
+            // Este dispatch me permite obtener los perros según requiera el usuario
             dispatch(getDogsApi());
+            // Este dispatch me permite resetear los filtros por si cambian de opción
+            dispatch(resetFilterAll())
         }
         if(e.target.value === "create") {
             dispatch(displayState({
@@ -46,7 +50,10 @@ const SearchAndFilter = () => {
                 api: false,
                 create: true,
             }))
+            // Este dispatch me permite obtener los perros según requiera el usuario
             dispatch(getDogsCreate());
+            // Este dispatch me permite resetear los filtros por si cambian de opción
+            dispatch(resetFilterAll())
         }
     }
 
@@ -55,10 +62,10 @@ const SearchAndFilter = () => {
             <DivSearchAndFilter>
                 <DivFilter>
                     <P>Temperaments:</P>
-                    <select onChange={handleClick}>
+                    <select onChange={handleClick} name="temperaments">
                         {
                             Array.isArray(temperaments) && temperaments?.map( (temperaments, index) => {
-                                return <option value={temperaments.name} key={index} name="temperaments">{temperaments.name}</option>
+                                return <option value={temperaments.name} key={index}>{temperaments.name}</option>
                             }) 
                         }
                     </select>
