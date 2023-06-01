@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const DivCard = styled.div`
@@ -84,4 +85,8 @@ export const DivDetail = styled.div`
             color: black;
         }
     }
+`;
+
+export const DivLink = styled(Link)`
+    text-decoration: none;
 `;

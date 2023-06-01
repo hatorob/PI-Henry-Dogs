@@ -10,6 +10,7 @@ import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import {  useDispatch } from 'react-redux';
 import { getDogs, getTemperaments, setCurrentPage } from './redux/actions';
+import Detail from './components/Detail/Detial';
 //! Importarmos data de prueba para hacer las cards
 //import {dogs} from "./utils/data";
 
@@ -42,11 +43,12 @@ function App() {
         (location.pathname !== '/') ? <Navbar />: null
       }
       {
-        (location.pathname !== '/' && location.pathname !== '/createDog') ? <SearchAndFilter /> : null
+        (location.pathname !== '/' && location.pathname !== '/createDog' && !location.pathname.startsWith('/detail/')) ? <SearchAndFilter /> : null
       }
       <Routes>
         <Route path='/' element={<WelcomeLandingPage login={login}/>} />
         <Route path='/home' element={<Home />} />
+        <Route path='/detail/:id' element={<Detail />} />
         <Route path='/createDog' element={<CreateDog />} />
       </Routes>
     </div>

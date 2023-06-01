@@ -10,6 +10,8 @@ const RESET_FILTERS = "RESET_FILTERS";
 const FILTER_WEIGHT = "FILTER_WEIGHT";
 const FILTER_ALPHABETIC = "FILTER_ALPHABETIC";
 const GET_BY_NAME = "GET_BY_NAME";
+const GET_DOG_BY_ID = "GET_DOG_BY_ID";
+const REST_BY_ID = "REST_BY_ID ";
 
 module.exports = {
     GET_DOGS,
@@ -23,5 +25,7 @@ module.exports = {
     RESET_FILTERS,
     FILTER_WEIGHT,
     FILTER_ALPHABETIC,
-    GET_BY_NAME
+    GET_BY_NAME,
+    GET_DOG_BY_ID,
+    REST_BY_ID
 }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_DOGS, GET_TEMPERAMENTS, GET_BY_NAME, SET_CURRENT_PAGE, CREATE_DOG, FILTER_TEMPERAMENTS, DISPLAY_STATE, GET_DOGS_API, GET_DOGS_CREATE, RESET_FILTERS, FILTER_WEIGHT, FILTER_ALPHABETIC } from "./actions-type";
+import { GET_DOGS, GET_TEMPERAMENTS, GET_BY_NAME, SET_CURRENT_PAGE, CREATE_DOG, FILTER_TEMPERAMENTS, DISPLAY_STATE, GET_DOGS_API, GET_DOGS_CREATE, RESET_FILTERS, FILTER_WEIGHT, FILTER_ALPHABETIC, GET_DOG_BY_ID, REST_BY_ID } from "./actions-type";
 
 export const getDogs = () => {
     return async (dispatch) => {
@@ -28,6 +28,17 @@ export const getDogsByName = (name) => {
         try {
             const { data } = await axios.get(`http://localhost:3001/dogs/name?name=${name}`);
             dispatch({type: GET_BY_NAME, payload: data })
+        } catch (error) {
+            alert("error: " + error.response.data.error);
+        }
+    }
+}
+
+export const getDogsById = (id) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`http://localhost:3001/dogs/${id}`);
+            dispatch({type: GET_DOG_BY_ID, payload: data })
         } catch (error) {
             alert("error: " + error.response.data.error);
         }
@@ -89,4 +100,8 @@ export const getDogsCreate = () => {
 //!resetFilterAll
 export const resetFilterAll = () => {
     return { type: RESET_FILTERS }
+}
+
+export const resetById = () => {
+    return { type: REST_BY_ID }
 }

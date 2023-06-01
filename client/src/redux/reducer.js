@@ -1,10 +1,11 @@
-import { GET_DOGS, GET_TEMPERAMENTS, GET_BY_NAME, SET_CURRENT_PAGE, CREATE_DOG, FILTER_TEMPERAMENTS, DISPLAY_STATE, GET_DOGS_API, GET_DOGS_CREATE, RESET_FILTERS, FILTER_WEIGHT, FILTER_ALPHABETIC } from "./actions-type";
+import { GET_DOGS, GET_TEMPERAMENTS, GET_BY_NAME, SET_CURRENT_PAGE, CREATE_DOG, FILTER_TEMPERAMENTS, DISPLAY_STATE, GET_DOGS_API, GET_DOGS_CREATE, RESET_FILTERS, FILTER_WEIGHT, FILTER_ALPHABETIC, GET_DOG_BY_ID, REST_BY_ID } from "./actions-type";
 
 //! creamos nuestro globalStore
 const initialState = {
     dogs: [],
     dogsApi: [],
     dogsCreate: [],
+    dogById: [],
     temperaments: [],
     dogsByName: {
         state: false,
@@ -22,7 +23,7 @@ const initialState = {
         state: false,
         data: []
     },
-    isCreateDog: [],
+    //isCreateDog: [],
     paginate: {
         currentPage: 1,
         itemsPage: 8,
@@ -48,6 +49,11 @@ const reducer = (state = initialState, {type,payload}) => {
                     state: true,
                     data: payload
                 }
+            }
+        case GET_DOG_BY_ID:
+            return {
+                ...state,
+                dogById: payload
             }
         case GET_TEMPERAMENTS:
             return {
@@ -210,6 +216,11 @@ const reducer = (state = initialState, {type,payload}) => {
                     state: false,
                     data: []
                 },
+            }
+        case REST_BY_ID: 
+            return {
+                ...state,
+                dogById: []
             }
         default:
         return {...state}

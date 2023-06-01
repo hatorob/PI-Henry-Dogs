@@ -1,6 +1,15 @@
-import { DivCard, DivDescription, DivWeight, DivTemperaments, DivDetail } from './styledCard';
+import { DivCard, DivDescription, DivWeight, DivTemperaments, DivDetail, DivLink } from './styledCard';
+import { getDogsById } from "../../redux/actions";
+import { useDispatch } from 'react-redux';
 
 const Card = ({id, name, imagen, weight ,temperaments}) => {
+
+    const dispatch = useDispatch();
+
+    const clickDetail = () => {
+        dispatch(getDogsById(id));
+    }
+
     return (
         <DivCard imagen={imagen}>
             <DivDescription>
@@ -16,7 +25,9 @@ const Card = ({id, name, imagen, weight ,temperaments}) => {
                     }
                 </DivTemperaments>
                 <DivDetail>
-                    <p> {`>`} </p>
+                    <DivLink to={`/detail/${id}`} >
+                        <p onClick={clickDetail}> {`>`} </p>
+                    </DivLink>
                 </DivDetail>
             </DivDescription>
         </DivCard>
