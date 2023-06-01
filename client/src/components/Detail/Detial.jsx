@@ -16,8 +16,6 @@ const Detail = () => {
         dispatch(resetById());
     }
 
- // un comentario
-
 
     return (
         <DivPage>
