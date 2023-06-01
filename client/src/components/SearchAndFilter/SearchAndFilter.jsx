@@ -1,6 +1,6 @@
 import { DivContainer, DivSearchAndFilter, DivFilter, DivSelect, P, DivSearch } from "./styledSearchAndFilter";
 import { useSelector, useDispatch } from "react-redux";
-import { filterTemperaments, filterWeight, displayState, getDogsApi, getDogsCreate, resetFilterAll, filterAlphabetic, setCurrentPage } from "../../redux/actions";
+import { filterTemperaments, filterWeight, displayState, getDogsApi, getDogsCreate, resetFilterAll, filterAlphabetic, setCurrentPage, getDogsByName } from "../../redux/actions";
 
 const SearchAndFilter = () => {
 
@@ -76,6 +76,23 @@ const SearchAndFilter = () => {
         }
     }
 
+    const handleEnter = (e) => {
+        if(e.key === "Enter") {
+            let name = e.target.value;
+             //Este dispatch es para actualizar el estado de display y poder renderizarlos en home
+            /*  dispatch(displayState({
+                all: false,
+                api: false,
+                create: false,
+            })) */
+            // Este dispatch me permite resetear los filtros por si cambian de opción
+            dispatch(resetFilterAll());
+            dispatch(setCurrentPage(1));
+            dispatch(getDogsByName(name));
+            e.target.value = "";
+         }
+    }
+
     return (
         <DivContainer>
             <DivSearchAndFilter>
@@ -100,7 +117,7 @@ const SearchAndFilter = () => {
                     </select>
                 </DivFilter>
                 <DivSearch>
-                    <P>Search</P>
+                    <input type="search" onKeyUp={handleEnter} placeholder="Search by name"/>
                 </DivSearch>
                 <DivSelect>
                     <P>Seleccione:</P>

@@ -1,4 +1,4 @@
-import { GET_DOGS, GET_TEMPERAMENTS,  SET_CURRENT_PAGE, CREATE_DOG, FILTER_TEMPERAMENTS, DISPLAY_STATE, GET_DOGS_API, GET_DOGS_CREATE, RESET_FILTERS, FILTER_WEIGHT, FILTER_ALPHABETIC } from "./actions-type";
+import { GET_DOGS, GET_TEMPERAMENTS, GET_BY_NAME, SET_CURRENT_PAGE, CREATE_DOG, FILTER_TEMPERAMENTS, DISPLAY_STATE, GET_DOGS_API, GET_DOGS_CREATE, RESET_FILTERS, FILTER_WEIGHT, FILTER_ALPHABETIC } from "./actions-type";
 
 //! creamos nuestro globalStore
 const initialState = {
@@ -6,6 +6,10 @@ const initialState = {
     dogsApi: [],
     dogsCreate: [],
     temperaments: [],
+    dogsByName: {
+        state: false,
+        data: []
+    },
     filterTemperaments: {
         state: false,
         data: []
@@ -37,6 +41,14 @@ const reducer = (state = initialState, {type,payload}) => {
                 ...state, 
                 dogs: payload
             } 
+        case GET_BY_NAME:
+            return {
+                ...state,
+                dogsByName: {
+                    state: true,
+                    data: payload
+                }
+            }
         case GET_TEMPERAMENTS:
             return {
                 ...state,
@@ -62,6 +74,10 @@ const reducer = (state = initialState, {type,payload}) => {
             if(state.displayState.create) resultTemperaments = state.dogsCreate.filter( dog => dog.temperaments.includes(payload));
             return {
                 ...state,
+                dogsByName: {
+                    state: false,
+                    data: []
+                },
                 filterTemperaments: {
                     state: true,
                     data: resultTemperaments
@@ -89,7 +105,7 @@ const reducer = (state = initialState, {type,payload}) => {
             }
 
             if(state.displayState.all) {
-                console.log("tipo:", payload);
+                //console.log("tipo:", payload);
                 resultWeight = order(state.dogs,payload);
             } 
             if(state.displayState.api) {
@@ -100,6 +116,10 @@ const reducer = (state = initialState, {type,payload}) => {
             } 
             return {
                 ...state,
+                dogsByName: {
+                    state: false,
+                    data: []
+                },
                 filterTemperaments: {
                     state: false,
                     data: []
@@ -128,7 +148,7 @@ const reducer = (state = initialState, {type,payload}) => {
                 })
             }
             if(state.displayState.all) {
-                console.log("tipo:", payload);
+                //console.log("tipo:", payload);
                 resultAlphabetic = orderToAlphabetic(state.dogs,payload);
             } 
             if(state.displayState.api) {
@@ -139,6 +159,10 @@ const reducer = (state = initialState, {type,payload}) => {
             } 
             return {
                 ...state,
+                dogsByName: {
+                    state: false,
+                    data: []
+                },
                 filterTemperaments: {
                     state: false,
                     data: []
@@ -170,6 +194,10 @@ const reducer = (state = initialState, {type,payload}) => {
         case RESET_FILTERS:
             return {
                 ...state,
+                dogsByName: {
+                    state: false,
+                    data: []
+                },
                 filterTemperaments: {
                     state: false,
                     data: []

@@ -9,6 +9,7 @@ const GET_DOGS_CREATE = "GET_DOGS_CREATE";
 const RESET_FILTERS = "RESET_FILTERS";
 const FILTER_WEIGHT = "FILTER_WEIGHT";
 const FILTER_ALPHABETIC = "FILTER_ALPHABETIC";
+const GET_BY_NAME = "GET_BY_NAME";
 
 module.exports = {
     GET_DOGS,
@@ -22,4 +23,5 @@ module.exports = {
     RESET_FILTERS,
     FILTER_WEIGHT,
     FILTER_ALPHABETIC,
+    GET_BY_NAME
 }

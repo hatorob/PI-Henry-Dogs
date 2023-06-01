@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_DOGS, GET_TEMPERAMENTS, SET_CURRENT_PAGE, CREATE_DOG, FILTER_TEMPERAMENTS, DISPLAY_STATE, GET_DOGS_API, GET_DOGS_CREATE, RESET_FILTERS, FILTER_WEIGHT, FILTER_ALPHABETIC } from "./actions-type";
+import { GET_DOGS, GET_TEMPERAMENTS, GET_BY_NAME, SET_CURRENT_PAGE, CREATE_DOG, FILTER_TEMPERAMENTS, DISPLAY_STATE, GET_DOGS_API, GET_DOGS_CREATE, RESET_FILTERS, FILTER_WEIGHT, FILTER_ALPHABETIC } from "./actions-type";
 
 export const getDogs = () => {
     return async (dispatch) => {
@@ -23,6 +23,17 @@ export const getTemperaments = () => {
     }
 }
 
+export const getDogsByName = (name) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`http://localhost:3001/dogs/name?name=${name}`);
+            dispatch({type: GET_BY_NAME, payload: data })
+        } catch (error) {
+            alert("error: " + error.response.data.error);
+        }
+    }
+}
+
 export const createDog = (dog) => {
     return async (dispatch) => {
         try {
@@ -35,7 +46,7 @@ export const createDog = (dog) => {
             const {data} = await axios.post(url,dog,config);
             dispatch({type: CREATE_DOG, payload: data})
         } catch (error) {
-            console.log(error);
+            //console.log(error);
             alert("error: " + error.response.data.error);
         }
     }

@@ -17,10 +17,12 @@ const Home = () => {
     const filterTemperaments = useSelector( state => state.filterTemperaments );
     const filterWeight = useSelector( state => state.filterWeight );
     const filterAlphabetic = useSelector( state => state.filterAlphabetic );
+    const dogsByName = useSelector( state => state.dogsByName );
     
     //console.log("filterTemperaments:",filterTemperaments);
     //console.log("filterWeight:",filterWeight);
-    console.log("filterAlphabetic:",filterAlphabetic);
+    //console.log("filterAlphabetic:",filterAlphabetic);
+    //console.log(dogsByName);
 
     if(display.all) {
         if(filterTemperaments.state) {
@@ -59,6 +61,10 @@ const Home = () => {
         }
     }
 
+    if(dogsByName.state) {
+        if(dogsByName.data.length === 0) alert("I don't find by name")
+        result = dogsByName.data;
+    }
 
     return (
         <>

@@ -10,7 +10,7 @@ const Card = ({id, name, imagen, weight ,temperaments}) => {
                 <h1>{name}</h1>
                 <DivTemperaments>
                     {   
-                        temperaments.map( (element,index) => {
+                        temperaments?.map( (element,index) => {
                             return (index <= 3) ? <p key={index}>{element}</p> : null
                         })
                     }
