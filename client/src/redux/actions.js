@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_DOGS, GET_TEMPERAMENTS, SET_CURRENT_PAGE, CREATE_DOG, FILTER_TEMPERAMENTS, DISPLAY_STATE, GET_DOGS_API, GET_DOGS_CREATE, RESET_FILTERS } from "./actions-type";
+import { GET_DOGS, GET_TEMPERAMENTS, SET_CURRENT_PAGE, CREATE_DOG, FILTER_TEMPERAMENTS, DISPLAY_STATE, GET_DOGS_API, GET_DOGS_CREATE, RESET_FILTERS, FILTER_WEIGHT, FILTER_ALPHABETIC } from "./actions-type";
 
 export const getDogs = () => {
     return async (dispatch) => {
@@ -50,6 +50,16 @@ export const setCurrentPage = (number) => {
 
 export const filterTemperaments = (temperament) => {
     return { type: FILTER_TEMPERAMENTS, payload: temperament}
+}
+
+// filtrar por weight
+export const filterWeight = (typeWeight) => {
+    return { type: FILTER_WEIGHT, payload: typeWeight}
+}
+
+// filtrar por alphabetic
+export const filterAlphabetic = (typeAlphabetic) => {
+    return { type: FILTER_ALPHABETIC, payload: typeAlphabetic}
 }
 
 export const displayState = (state) => {

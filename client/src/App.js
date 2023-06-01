@@ -9,7 +9,7 @@ import Home from './components/Home/Home';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import {  useDispatch } from 'react-redux';
-import { getDogs, getTemperaments } from './redux/actions';
+import { getDogs, getTemperaments, setCurrentPage } from './redux/actions';
 //! Importarmos data de prueba para hacer las cards
 //import {dogs} from "./utils/data";
 
@@ -28,10 +28,11 @@ function App() {
     //! Me va a traer todos los perros siempre y cuando sea la url "/home"
     if(location.pathname === "/home" || location.pathname === "/createDog") {
       dispatch(getTemperaments());
+      dispatch(setCurrentPage(1));
     }
     if(location.pathname === "/home") {
-        
-        dispatch(getDogs());        
+        dispatch(getDogs()); 
+        dispatch(setCurrentPage(1));       
     }
 }, [dispatch,location.pathname] )
 
