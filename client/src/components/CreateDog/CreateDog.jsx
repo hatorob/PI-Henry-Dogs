@@ -74,6 +74,7 @@ const CreateDog = () => {
                 yearsLife: formData.yearsLife.toString(),
                 temperaments: formData.temperaments
             } 
+            //e.target.disabled = true;
             dispatch(createDog(dog)); 
             navigate("/home");
         }
