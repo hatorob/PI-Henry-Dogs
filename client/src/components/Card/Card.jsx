@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 const Card = ({id, name, imagen, weight ,temperaments}) => {
 
+    
     const dispatch = useDispatch();
 
     const clickDetail = () => {
