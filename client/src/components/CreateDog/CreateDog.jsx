@@ -48,14 +48,24 @@ const CreateDog = () => {
             })
         }
     }
-    console.log("arrayTemperaments: ",formData.temperaments);
+    
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(formData.name && formData.imagen &&
-            formData.minimumHeight && formData.maximumHeight &&
-            formData.minimumWeight && formData.maximumWeight &&
-            formData.yearsLife && formData.temperaments
-        ) {
+
+        if(errors.name) {
+            alert(errors.name);
+        }
+        if(errors.imagen) {
+            alert(errors.imagen);
+        }
+        if(errors.height || errors.weight) {
+            alert(errors.height || errors.weight);
+        }
+        if(errors.yearslife) {
+            alert(errors.yearslife)
+        }
+
+        if(!errors.name && !errors.imagen && !errors.height && !errors.weight && !errors.yearslife) {
             const dog = {
                 name: formData.name,
                 image: formData.imagen,
@@ -66,9 +76,8 @@ const CreateDog = () => {
             } 
             dispatch(createDog(dog)); 
             navigate("/home");
-        } else {
-            alert("No puede haber data vacia")
         }
+        
     }
 
     return (
