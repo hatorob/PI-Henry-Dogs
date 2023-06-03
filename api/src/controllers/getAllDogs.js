@@ -4,6 +4,7 @@ const {URL, getObjData} = require("./utils");
 
 
 const getAllDogs = async (req,res)=> {
+    // ?limit=60 ----> para limitarlo
     try {
         const response = await axios(`${URL}?limit=60`); 
         const dogsData = response.data;

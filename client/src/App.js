@@ -5,12 +5,13 @@ import Navbar from './components/Navbar/Navbar';
 import CreateDog from './components/CreateDog/CreateDog';
 import SearchAndFilter from './components/SearchAndFilter/SearchAndFilter';
 import Home from './components/Home/Home';
+import Detail from './components/Detail/Detial';
+import Error404 from './components/Error404/Error404';
 //! IMPORTAMOS ROUTES Y ROUTER
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import {  useDispatch } from 'react-redux';
 import { getDogs, getTemperaments, setCurrentPage } from './redux/actions';
-import Detail from './components/Detail/Detial';
 //! Importarmos data de prueba para hacer las cards
 //import {dogs} from "./utils/data";
 
@@ -50,6 +51,7 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/detail/:id' element={<Detail />} />
         <Route path='/createDog' element={<CreateDog />} />
+        <Route path='*' element={ <Error404 />} />
       </Routes>
     </div>
   );
