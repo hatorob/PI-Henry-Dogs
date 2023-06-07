@@ -33,7 +33,7 @@ const Cards = ({dogs}) => {
         <div>
             <DivContainer>
                 {
-                
+
                 dogsPaginate.map( (dog,index) => {
                         return (
                             <Card key={index}
