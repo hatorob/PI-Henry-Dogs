@@ -9,12 +9,12 @@ const WelcomeLandingPage = ({login}) => {
         <DivPage>
             <DivContainer>
                 <DivWelcome>
-                    <H1>BIENVENIDO</H1>
-                    <P>A TÚ APP DE</P>
+                    <H1>WELCOME</H1>
+                    <P>TO YOUR APPLICATION</P>
                     <div>
                         <ImageDog src={imgDog} />
                     </div>
-                    <ButtonLogin type='submit' onClick={login}> ENTRAR </ButtonLogin>
+                    <ButtonLogin type='submit' onClick={login}> ACCESS </ButtonLogin>
                 </DivWelcome>
                 <DivVideo>
                     <VideoPlay src={videoDog} autoPlay muted loop/>

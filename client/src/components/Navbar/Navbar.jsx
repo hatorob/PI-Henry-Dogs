@@ -11,7 +11,7 @@ const Navbar = () => {
     return(
         <DivNavbar>
             <DivRedes>
-                REDES
+                
             </DivRedes>
             <DivTitlePage>
                 <H1 onClick={handleClick}>PI-DOGS-HENRY</H1>

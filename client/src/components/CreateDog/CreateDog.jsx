@@ -3,7 +3,7 @@ import videoDog from '../../utils/video/videodog.mp4';
 import { useState } from "react";
 import { validation } from "./validation";
 import {  useSelector, useDispatch } from 'react-redux';
-import { createDog } from "../../redux/actions";
+import { createDog, displayState } from "../../redux/actions";
 import { useNavigate } from 'react-router-dom';
 
 const CreateDog = () => {
@@ -76,6 +76,11 @@ const CreateDog = () => {
             } 
             //e.target.disabled = true;
             dispatch(createDog(dog)); 
+            dispatch(displayState({
+                all: true,
+                api: false,
+                create: false,
+            }))
             navigate("/home");
         }
         
